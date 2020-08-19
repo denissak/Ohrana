@@ -11,7 +11,6 @@ public class OhranaController {
         public String ohranaTruda(Model model)
         {
            return "ohrana-truda";
-
         }
 
 }

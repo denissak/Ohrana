@@ -10,7 +10,7 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting(Model model) {
-        model.addAttribute("title", "тест");
+        model.addAttribute("title", "Главная");
         return "home";
     }
 
