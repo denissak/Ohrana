@@ -20,14 +20,17 @@
         <div id="extwaiokist" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe="><div id="extwaiimpotscp" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe=" vn="1gtra"></div></div></div>
 </div>
 
-    <div class="container mt-5">
-        <h1>Список сотрудников</h1>
-        <div th:each="el : ${persons}" class="ui-icon-alert alert-into mt-2">
-            <h3 th:text="${el.surname + ' ' + el.name + ' ' + el.patronymic + ' ' + el.profession}" ></h3>
-            <a th:href="'/person/' + ${el.id}" class="btn btn-warning">Просмотр</a>
-        </div>
+<div class="container mt-5">
+    <div th:each="el : ${person}" class="alert alert-into mt-2">
+        <h1 th:text="${el.surname}"/>
+        <h1 th:text="${el.name}"/>
+        <h1 th:text="${el.patronymic}"/>
+        <h1 th:text="${el.profession}"/>
+        <a th:href="'/person/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+        <a th:href="'/person/' + ${el.id} + '/delete'" class="btn btn-warning">Удалить</a>
     </div>
+</div>
 
-    <div th:insert="blocks/footer :: footer"></div>
-    </body>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
 </html>

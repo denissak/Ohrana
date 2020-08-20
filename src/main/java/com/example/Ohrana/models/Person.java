@@ -13,6 +13,16 @@ public class Person {
     private Long id;
     private String name;
     private String surname;
+
+    public Person(){}
+
+    public Person(String name, String surname, String patronymic, String profession) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.profession = profession;
+    }
+
     private String patronymic;
     private String profession;
 
