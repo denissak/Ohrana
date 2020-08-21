@@ -22,9 +22,47 @@
 
     <div class="container mt-5">
         <h1>Список сотрудников</h1>
-        <div th:each="el : ${persons}" class="ui-icon-alert alert-into mt-2">
-            <h3 th:text="${el.surname + ' ' + el.name + ' ' + el.patronymic + ' ' + el.profession}" ></h3>
-            <a th:href="'/person/' + ${el.id}" class="btn btn-warning">Просмотр</a>
+<!--        <div th:each="el : ${persons}" class="ui-icon-alert alert-into mt-2">-->
+<!--            <h3 th:text="${el.surname + ' ' + el.name + ' ' + el.patronymic + ' ' + el.structSubdivision + ' ' + el.profession + ' ' + el.tab}" ></h3>
+            <a th:href="'/person/' + ${el.id}" class="btn btn-warning">Просмотр</a>-->
+<!--        </div>-->
+<!--        <table>
+                        <thead>
+                        <tr>
+                            <th scope="col">Фамилия</th>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Отчество</th>
+                            <th scope="col">Структурное подразделение</th>
+                            <th scope="col">Профессия</th>
+                            <th scope="col">Табельный номер</th>
+                        </tr>
+                        </thead>
+        </table>-->
+        <table class="table table-striped">
+            <div th:each="el : ${persons}" class="ui-icon-alert alert-into mt-2">
+<!--                <thead>
+                <tr>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Отчество</th>
+                    <th scope="col">Структурное подразделение</th>
+                    <th scope="col">Профессия</th>
+                    <th scope="col">Табельный номер</th>
+                </tr>
+                </thead>-->
+            <tbody>
+
+                <th scope="row" th:text="${el.surname} "></th>
+                <th scope="row"  th:text="${el.name}"></td>
+                <th scope="row" th:text="${el.patronymic}"></td>
+                <th scope="row" th:text="${el.structSubdivision}"></td>
+                <th scope="row" th:text="${el.profession}"></td>
+                <th scope="row" th:text="${el.tab}"></td>
+                <td><a th:href="'/person/' + ${el.id}" class="btn btn-warning">Просмотр</a></td>
+
+            </tbody>
+            </div>
+        </table>
         </div>
     </div>
 

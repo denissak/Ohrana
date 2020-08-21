@@ -35,8 +35,10 @@ public class PersonController {
         public String personPostAdd(@RequestParam String name,
                                     @RequestParam String surname,
                                     @RequestParam String patronymic,
+                                    @RequestParam String structSubdivision,
+                                    @RequestParam String tab,
                                     @RequestParam String profession,Model model){
-        Person person = new Person(name,surname,patronymic,profession);
+        Person person = new Person(name,surname,patronymic,profession,structSubdivision,tab);
         personRepository.save(person);
         return "redirect:/person";
     }
@@ -67,14 +69,18 @@ public class PersonController {
 
     @PostMapping("/person/{id}/edit")
     public String personPostEdit(@PathVariable(value = "id") long id,
-                                @RequestParam String name,
-                                @RequestParam String surname,
-                                @RequestParam String patronymic,
-                                @RequestParam String profession,Model model){
+                                    @RequestParam String name,
+                                    @RequestParam String surname,
+                                    @RequestParam String patronymic,
+                                     @RequestParam String structSubdivision,
+                                     @RequestParam String tab,
+                                    @RequestParam String profession,Model model){
         Person person = personRepository.findById(id).orElseThrow();
         person.setName(name);
         person.setSurname(surname);
         person.setPatronymic(patronymic);
+        person.setStructSubdivision(structSubdivision);
+        person.setTab(tab);
         person.setProfession(profession);
         personRepository.save(person);
         return "redirect:/person";

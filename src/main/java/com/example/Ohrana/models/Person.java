@@ -13,18 +13,37 @@ public class Person {
     private Long id;
     private String name;
     private String surname;
+    private String patronymic;
+    private String profession;
+    private String structSubdivision;
+    private String tab;
 
     public Person(){}
 
-    public Person(String name, String surname, String patronymic, String profession) {
+    public Person(String name, String surname, String patronymic, String profession, String structSubdivision, String tab) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.profession = profession;
+        this.structSubdivision = structSubdivision;
+        this.tab = tab;
     }
 
-    private String patronymic;
-    private String profession;
+    public String getStructSubdivision() {
+        return structSubdivision;
+    }
+
+    public void setStructSubdivision(String structSubdivision) {
+        this.structSubdivision = structSubdivision;
+    }
+
+    public String getTab() {
+        return tab;
+    }
+
+    public void setTab(String tab) {
+        this.tab = tab;
+    }
 
     public Long getId() {
         return id;
