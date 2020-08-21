@@ -53,4 +53,38 @@ public class PersonController {
         return "person-details";
     }
 
+    @GetMapping("/person/{id}/edit")
+    public String personEdit(@PathVariable(value = "id") long id, Model model){
+        if (!personRepository.existsById(id)){
+            return "redirect:/person";
+        }
+        Optional<Person> person = personRepository.findById(id);
+        ArrayList<Person> personArrayList = new ArrayList<>();
+        person.ifPresent(personArrayList::add);
+        model.addAttribute("person", personArrayList);
+        return "person-edit";
+    }
+
+    @PostMapping("/person/{id}/edit")
+    public String personPostEdit(@PathVariable(value = "id") long id,
+                                @RequestParam String name,
+                                @RequestParam String surname,
+                                @RequestParam String patronymic,
+                                @RequestParam String profession,Model model){
+        Person person = personRepository.findById(id).orElseThrow();
+        person.setName(name);
+        person.setSurname(surname);
+        person.setPatronymic(patronymic);
+        person.setProfession(profession);
+        personRepository.save(person);
+        return "redirect:/person";
+    }
+
+    @PostMapping("/person/{id}/delete")
+    public String personPostDelete(@PathVariable(value = "id") long id, Model model){
+        Person person = personRepository.findById(id).orElseThrow();
+        personRepository.delete(person);
+        return "redirect:/person";
+    }
+
 }
