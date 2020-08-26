@@ -14,17 +14,17 @@
             <a class="p-2 text-dark" href="/">Главная</a>
             <a class="p-2 text-dark" href="/ohranaTruda">Охрана труда</a>
             <a class="btn btn-outline-primary" href="/person/add">Добавить человека</a>
-            <a class="btn btn-outline-primary" href="/structsubdivision/add">Добавить структурное подразделение</a>
+            <a class="btn btn-outline-primary" href="/structsubdivision">Cтруктурное подразделение</a>
          </nav>
         <form th:action="@{/logout}" method="post">
-            <input type="submit" class="btn btn-outline-primary" value="Sign Out"/>
+            <input type="submit" class="btn btn-outline-primary" value="Выход"/>
         </form>
         <div id="extwaiokist" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe="><div id="extwaiimpotscp" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe=" vn="1gtra"></div></div></div>
 </div>
 
     <div class="container mt-5">
         <h1>Список сотрудников</h1>
-        <form method="post" action="filter">
+        <form method="get" action="/person">
             <input type="text" name="filter" placeholder="Поиск" class="form-control">
             <button type="submit" class="btn btn-success">Найти</button>
         </form>

@@ -1,9 +1,9 @@
 package com.example.Ohrana.controllers;
 
 import com.example.Ohrana.models.Person;
-import com.example.Ohrana.models.StructSubdivision;
 import com.example.Ohrana.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -22,10 +21,19 @@ public class PersonController {
     private PersonRepository personRepository;
 
     @GetMapping("/person")
-    public String ohranaTruda(Model model)
+    public String ohranaTruda(@RequestParam(required = false) String filter, Model model)
     {
         Iterable<Person> persons = personRepository.findAll();
+
+        if (filter != null && !filter.isEmpty()){
+            persons = personRepository.findBySurname(filter);
+        }
+        else {
+            persons = personRepository.findAll();
+        }
+
         model.addAttribute("persons", persons);
+        model.addAttribute("filter", filter);
         return "person";
     }
 
@@ -40,7 +48,7 @@ public class PersonController {
                                     @RequestParam String structSubdivision,
                                     @RequestParam String tab,
                                     @RequestParam String profession,Model model){
-        Person person = new Person(name,surname,patronymic,profession,structSubdivision,tab);
+        Person person = new Person(name,surname,patronymic,structSubdivision,profession,tab);
         personRepository.save(person);
         return "redirect:/person";
     }
@@ -95,17 +103,5 @@ public class PersonController {
         return "redirect:/person";
     }
 
-    @PostMapping ("filter")
-    public String filter(@RequestParam String filter, Model model){
-        Iterable<Person> persons;
-        if (filter != null && !filter.isEmpty()){
-            persons = personRepository.findBySurname(filter);
-        }
-        else {
-            persons = personRepository.findAll();
-        }
-        model.addAttribute("persons", persons);
-        return "person";
-    }
 
 }

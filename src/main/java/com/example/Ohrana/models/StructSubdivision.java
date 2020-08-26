@@ -7,19 +7,14 @@ public class StructSubdivision {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-
     private Long id;
     private String structSubdivision;
-    @ManyToOne
-    private Person person;
 
-    public Person getPerson() {
-        return person;
+    public StructSubdivision(String structSubdivision) {
+        this.structSubdivision = structSubdivision;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public StructSubdivision() {
     }
 
     public Long getId() {

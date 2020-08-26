@@ -15,19 +15,26 @@ public class StructSubdivisionController {
     private StructSubdivisionRepository structSubdivisionRepository;
 
     @GetMapping("/structsubdivision")
-    public String ohranaTruda(Model model)
-    {
+    public String ohranaTruda(@RequestParam(required = false) String filter, Model model){
         Iterable<StructSubdivision> structSubdivisions = structSubdivisionRepository.findAll();
-        model.addAttribute("structsubdivision", structSubdivisions);
+        if (filter != null && !filter.isEmpty()){
+            structSubdivisions = structSubdivisionRepository.findByStructSubdivision(filter);
+        }
+        else {
+            structSubdivisions = structSubdivisionRepository.findAll();
+        }
+        model.addAttribute("structSubdivisions", structSubdivisions);
         return "structsubdivision";
     }
+
 
     @GetMapping("/structsubdivision/add")
     public String structSubdivisionAdd(Model model){
         return "structsubdivision-add";
     }
     @PostMapping("/structsubdivision/add")
-    public String structSubdivisionPostAdd(@RequestParam StructSubdivision structSubdivision, Model model){
+    public String structSubdivisionPostAdd(@RequestParam String structsubdivision, Model model){
+        StructSubdivision structSubdivision = new StructSubdivision(structsubdivision);
         structSubdivisionRepository.save(structSubdivision);
         return "redirect:/structsubdivision";
     }

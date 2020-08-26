@@ -17,9 +17,11 @@ public class Person {
     private String structSubdivision;
     private String tab;
 
+/*    private */
+
     public Person(){}
 
-    public Person(String name, String surname, String patronymic, String profession, String structSubdivision, String tab) {
+    public Person(String name, String surname, String patronymic,String structSubdivision, String profession, String tab) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
