@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="Сотрудники"/>
+    <title th:text="Добавить структурное подразделение"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
@@ -14,9 +14,6 @@
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-dark" href="/">Главная</a>
             <a class="p-2 text-dark" href="/ohranaTruda">Охрана труда</a>
-<!--            <a class="p-2 text-dark" href="/person/add">Добавить человека</a>-->
-            <a class="btn btn-outline-primary" href="/person/add">Добавить человека</a>
-
         </nav>
         <form th:action="@{/logout}" method="post">
             <input type="submit" class="btn btn-outline-primary" value="Sign Out"/>
@@ -24,19 +21,12 @@
         <div id="extwaiokist" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe="><div id="extwaiimpotscp" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe=" vn="1gtra"></div></div></div>
 </div>
 
-<div class="container mt-5">
-    <div th:each="el : ${person}" class="alert alert-into mt-2">
-        <h1 th:text="${el.surname}"/>
-        <h1 th:text="${el.name}"/>
-        <h1 th:text="${el.patronymic}"/>
-        <h1 th:text="${el.structSubdivision}"/>
-        <h1 th:text="${el.profession}"/>
-        <h1 th:text="${el.tab}"/>
-        <a th:href="'/person/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a><br><br>
-        <form th:action="'/person/' + ${el.id} + '/delete'" method="post">
-        <button class="btn btn-danger" type ="submit">Удалить</button>
-        </form>
-    </div>
+<div class="container mt-5" mb-5>
+    <h1>Добавить структурное подразделение</h1>
+    <form action = "/structsubdivision/add" method="post">
+        <input type="text" name="structsubdivision" placeholder="Введите структурное подразделение" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Добавить структурное подразделение</button>
+    </form>
 </div>
 
 <div th:insert="blocks/footer :: footer"></div>

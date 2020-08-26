@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Добавить нового пользователя</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div th:fragment="header">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Трамвайный парк</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="/">Главная</a>
+            <a class="p-2 text-dark" href="/ohranaTruda">Охрана труда</a>
+            <a class="btn btn-outline-success" href="/login">Вход</a>
+        </nav>
+        <div id="extwaiokist" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe="><div id="extwaiimpotscp" style="display:none" v="pdbbg" q="cd573aec" c="76.88" i="106" u="29.70" s="08132022" d="1" w="false" m="BMe=" vn="1gtra"></div></div></div>
+</div>
+
+    <div th:if="${message}">
+        <h1>Пользователь уже существует</h1>
+    </div>
+    <form th:action = "@{/registration}" method="post">
+
+        <div class="container mt-2">
+            <input type="text" name="username" placeholder="Придумайте логин" class="form-control">
+        </div>
+        <div class="container mt-2">
+            <input type="text" name="password" placeholder="Придумайте пароль" class="form-control">
+        </div>
+        <div class="container mt-2">
+        <button type="submit" class="btn btn-success">Добавить пользователя</button>
+        </div>
+    </form>
+
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Добавить нового пользователя</title>
+</head>
+<body>
+<div th:if="${message}">
+    Пользователь уже существует
+</div>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/registration}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>-->

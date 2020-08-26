@@ -1,6 +1,7 @@
 package com.example.Ohrana.controllers;
 
 import com.example.Ohrana.models.Person;
+import com.example.Ohrana.models.StructSubdivision;
 import com.example.Ohrana.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -91,6 +93,19 @@ public class PersonController {
         Person person = personRepository.findById(id).orElseThrow();
         personRepository.delete(person);
         return "redirect:/person";
+    }
+
+    @PostMapping ("filter")
+    public String filter(@RequestParam String filter, Model model){
+        Iterable<Person> persons;
+        if (filter != null && !filter.isEmpty()){
+            persons = personRepository.findBySurname(filter);
+        }
+        else {
+            persons = personRepository.findAll();
+        }
+        model.addAttribute("persons", persons);
+        return "person";
     }
 
 }

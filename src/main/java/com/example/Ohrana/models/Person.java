@@ -1,9 +1,6 @@
 package com.example.Ohrana.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Person {
@@ -15,6 +12,8 @@ public class Person {
     private String surname;
     private String patronymic;
     private String profession;
+
+
     private String structSubdivision;
     private String tab;
 
