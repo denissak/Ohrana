@@ -11,31 +11,17 @@ public class Person {
     private String name;
     private String surname;
     private String patronymic;
-    private String profession;
-
-
-    private String structSubdivision;
     private String tab;
-
-/*    private */
 
     public Person(){}
 
-    public Person(String name, String surname, String patronymic,String structSubdivision, String profession, String tab) {
+
+
+        public Person(String name, String surname, String patronymic, String tab) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
-        this.profession = profession;
-        this.structSubdivision = structSubdivision;
         this.tab = tab;
-    }
-
-    public String getStructSubdivision() {
-        return structSubdivision;
-    }
-
-    public void setStructSubdivision(String structSubdivision) {
-        this.structSubdivision = structSubdivision;
     }
 
     public String getTab() {
@@ -78,11 +64,4 @@ public class Person {
         this.patronymic = patronymic;
     }
 
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
 }

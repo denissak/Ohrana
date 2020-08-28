@@ -29,8 +29,6 @@
         <h1 th:text="${el.surname}"/>
         <h1 th:text="${el.name}"/>
         <h1 th:text="${el.patronymic}"/>
-        <h1 th:text="${el.structSubdivision}"/>
-        <h1 th:text="${el.profession}"/>
         <h1 th:text="${el.tab}"/>
         <a th:href="'/person/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a><br><br>
         <form th:action="'/person/' + ${el.id} + '/delete'" method="post">

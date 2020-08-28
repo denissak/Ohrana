@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface StructSubdivisionRepository extends CrudRepository<StructSubdivision, Long> {
-    List<StructSubdivision> findByStructSubdivision (String surname);
+    List<StructSubdivision> findByStructSubdivision (String structSubdivision);
 }

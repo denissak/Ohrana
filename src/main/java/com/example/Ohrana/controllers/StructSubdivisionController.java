@@ -33,7 +33,8 @@ public class StructSubdivisionController {
         return "structsubdivision-add";
     }
     @PostMapping("/structsubdivision/add")
-    public String structSubdivisionPostAdd(@RequestParam String structsubdivision, Model model){
+    public String structSubdivisionPostAdd(@RequestParam String structsubdivision,
+                                            @RequestParam String profession, Model model){
         StructSubdivision structSubdivision = new StructSubdivision(structsubdivision);
         structSubdivisionRepository.save(structSubdivision);
         return "redirect:/structsubdivision";

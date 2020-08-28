@@ -1,9 +1,9 @@
 package com.example.Ohrana.controllers;
 
 import com.example.Ohrana.models.Person;
+import com.example.Ohrana.models.StructSubdivision;
 import com.example.Ohrana.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,10 +45,8 @@ public class PersonController {
         public String personPostAdd(@RequestParam String name,
                                     @RequestParam String surname,
                                     @RequestParam String patronymic,
-                                    @RequestParam String structSubdivision,
-                                    @RequestParam String tab,
-                                    @RequestParam String profession,Model model){
-        Person person = new Person(name,surname,patronymic,structSubdivision,profession,tab);
+                                    @RequestParam String tab, Model model){
+        Person person = new Person(name,surname,patronymic,tab);
         personRepository.save(person);
         return "redirect:/person";
     }
@@ -82,16 +80,12 @@ public class PersonController {
                                     @RequestParam String name,
                                     @RequestParam String surname,
                                     @RequestParam String patronymic,
-                                     @RequestParam String structSubdivision,
-                                     @RequestParam String tab,
-                                    @RequestParam String profession,Model model){
+                                     @RequestParam String tab,Model model){
         Person person = personRepository.findById(id).orElseThrow();
         person.setName(name);
         person.setSurname(surname);
         person.setPatronymic(patronymic);
-        person.setStructSubdivision(structSubdivision);
         person.setTab(tab);
-        person.setProfession(profession);
         personRepository.save(person);
         return "redirect:/person";
     }

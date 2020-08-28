@@ -1,5 +1,7 @@
 package com.example.Ohrana.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,12 +11,20 @@ public class StructSubdivision {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String structSubdivision;
+    private String profession;
 
+
+
+
+    public StructSubdivision() {
+    }
     public StructSubdivision(String structSubdivision) {
         this.structSubdivision = structSubdivision;
     }
 
-    public StructSubdivision() {
+    public StructSubdivision(String structSubdivision, String profession) {
+        this.structSubdivision = structSubdivision;
+        this.profession = profession;
     }
 
     public Long getId() {
@@ -33,4 +43,11 @@ public class StructSubdivision {
         this.structSubdivision = structSubdivision;
     }
 
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
 }
