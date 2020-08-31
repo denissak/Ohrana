@@ -27,7 +27,6 @@ public class StructSubdivisionController {
         return "structsubdivision";
     }
 
-
     @GetMapping("/structsubdivision/add")
     public String structSubdivisionAdd(Model model){
         return "structsubdivision-add";
@@ -35,7 +34,7 @@ public class StructSubdivisionController {
     @PostMapping("/structsubdivision/add")
     public String structSubdivisionPostAdd(@RequestParam String structsubdivision,
                                             @RequestParam String profession, Model model){
-        StructSubdivision structSubdivision = new StructSubdivision(structsubdivision);
+        StructSubdivision structSubdivision = new StructSubdivision(structsubdivision, profession);
         structSubdivisionRepository.save(structSubdivision);
         return "redirect:/structsubdivision";
     }

@@ -1,7 +1,6 @@
 package com.example.Ohrana.controllers;
 
 import com.example.Ohrana.models.Person;
-import com.example.Ohrana.models.StructSubdivision;
 import com.example.Ohrana.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
