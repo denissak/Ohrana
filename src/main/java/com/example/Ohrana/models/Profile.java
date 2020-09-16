@@ -1,25 +1,28 @@
 package com.example.Ohrana.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Profile {
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
+    @Column (name = "profile_id")
     private Long id;
-    @ManyToOne
-    private Person person;
-    @ManyToOne
-    private StructSubdivision structSubdivision;
-
+    @ManyToMany
+    @JoinTable (name = "profile_person", joinColumns = @JoinColumn (name = "profile_id"), inverseJoinColumns = @JoinColumn (name = "person_id"))
+    private List<Person> persons;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable (name = "profile_structsubdivision", joinColumns = @JoinColumn (name = "profile_id"), inverseJoinColumns = @JoinColumn (name = "structsubdivision_id"))
+    private List<StructSubdivision> structSubdivisions;
 
     public Profile() {
     }
 
-    public Profile(Person person, StructSubdivision structSubdivision) {
-        this.person = person;
-        this.structSubdivision = structSubdivision;
+    public Profile(List<Person> persons, List <StructSubdivision> structSubdivisions) {
+        this.persons = persons;
+        this.structSubdivisions = structSubdivisions;
     }
 
     public Profile(Profile person, Profile structSubdivision) {
@@ -34,19 +37,19 @@ public class Profile {
         this.id = id;
     }
 
-    public Person getPerson() {
-        return person;
+    public List<Person> getPerson() {
+        return persons;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setPerson(List <Person> person) {
+        this.persons = person;
     }
 
-    public StructSubdivision getStructSubdivision() {
-        return structSubdivision;
+    public List <StructSubdivision> getStructSubdivision() {
+        return structSubdivisions;
     }
 
-    public void setStructSubdivision(StructSubdivision structSubdivision) {
-        this.structSubdivision = structSubdivision;
+    public void setStructSubdivision(List <StructSubdivision> structSubdivision) {
+        this.structSubdivisions = structSubdivision;
     }
 }

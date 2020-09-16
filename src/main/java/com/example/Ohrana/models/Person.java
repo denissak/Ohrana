@@ -1,6 +1,7 @@
 package com.example.Ohrana.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -8,33 +9,22 @@ public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "profile_id")
     private Long id;
     private String name;
     private String surname;
     private String patronymic;
     private String tab;
-    @OneToMany (mappedBy = "person", cascade = CascadeType.ALL)
-    private Set<Profile> profiles;
 
 
-    public Set<Profile> getProfiles() {
-        return profiles;
-    }
 
-    public void setProfiles(Set<Profile> profiles) {
-        this.profiles = profiles;
-    }
+
+
 
     public Person(){}
 
 
-    public Person(String name, String surname, String patronymic, String tab, Set<Profile> profiles) {
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.tab = tab;
-        this.profiles = profiles;
-    }
+
 
     public Person(String name, String surname, String patronymic, String tab) {
         this.name = name;
